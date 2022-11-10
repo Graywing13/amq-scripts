@@ -49,11 +49,6 @@ function resetTabTitle() {
     	resetTabTitle();
     });
 
- let leaveGameListener = new Listener("leave game", (result) => {
-    	resetTabTitle();
-    });
-
 answerResultsListener.bindListener();
 nextSongListener.bindListener();
 quizOverListener.bindListener();
-leaveGameListener.bindListener();
