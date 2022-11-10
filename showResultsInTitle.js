@@ -1,16 +1,18 @@
 // ==UserScript==
 // @name         Show Results In Tab Title
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Show correct answer in tab title during answer phase
 // @author       Graywing13
 // @match        https://animemusicquiz.com/
 // @grant        none
 // ==/UserScript==
 
+const preferredLanguage = "english"; // change to "romaji" if u prefer.
+
 function changeTabTitle(newSong) {
     const correctness = newSong.correct ? "✔️ " : (newSong.correct === false ? "❌ " : "");
-    document.title = `${correctness}${newSong.anime.english} | ${newSong.artist} | ${newSong.name}`;
+    document.title = `${correctness}${newSong.anime[preferredLanguage]} | ${newSong.artist} | ${newSong.name}`;
 }
 
 function resetTabTitle() {
@@ -18,7 +20,6 @@ function resetTabTitle() {
 }
 
  let answerResultsListener = new Listener("answer results", (result) => {
-      // creds to TheJoseph98 for this section
     	setTimeout(() => {
 	        let newSong = {
 	            name: result.songInfo.songName,
