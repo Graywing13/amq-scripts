@@ -21,6 +21,7 @@ function resetTabTitle() {
 }
 
  let answerResultsListener = new Listener("answer results", (result) => {
+	 // Creds to the great TheJoseph98 for this section
     	setTimeout(() => {
 	        let newSong = {
 	            name: result.songInfo.songName,
