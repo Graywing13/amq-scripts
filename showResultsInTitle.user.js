@@ -5,7 +5,8 @@
 // @description  Show correct answer in tab title during answer phase
 // @author       Graywing13
 // @match        https://animemusicquiz.com/
-// @grant        none
+// @downloadURL  https://github.com/Graywing13/amq-scripts/blob/main/showResultsInTitle.user.js
+// @updateURL    https://github.com/Graywing13/amq-scripts/blob/main/showResultsInTitle.user.js
 // ==/UserScript==
 
 const preferredLanguage = "english"; // change to "romaji" if u prefer.
