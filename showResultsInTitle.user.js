@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Show Results In Tab Title
+// @name         AMQ Show Results In Tab Title
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      1.0
 // @description  Show correct answer in tab title during answer phase
 // @author       Graywing13
 // @match        https://animemusicquiz.com/
@@ -19,6 +19,8 @@ function changeTabTitle(newSong) {
 function resetTabTitle() {
     document.title = "AMQ";
 }
+
+const leaveClickedListener = () => resetTabTitle();
 
  let answerResultsListener = new Listener("answer results", (result) => {
 	 // Creds to the great TheJoseph98 for this section
@@ -41,14 +43,21 @@ function resetTabTitle() {
 	    },0);
     });
 
- let nextSongListener = new Listener("play next song", (result) => {
+ let nextSongListener = new Listener("play next song", () => {
     	resetTabTitle();
     });
 
- let quizOverListener = new Listener("quiz over", (result) => {
+let quizStartListener = new Listener("quiz ready", () => {
+    // resets the title when leaving the quiz
+    document.getElementById("qpLeaveButton").addEventListener('click', leaveClickedListener);
+});
+
+ let quizOverListener = new Listener("quiz over", () => {
     	resetTabTitle();
+        document.getElementById("qpLeaveButton").removeEventListener('click', leaveClickedListener);
     });
 
 answerResultsListener.bindListener();
 nextSongListener.bindListener();
+quizStartListener.bindListener();
 quizOverListener.bindListener();
