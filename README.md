@@ -14,7 +14,7 @@ For anyone else who tabs out a lot -- this shows answer results in the tab title
 ---
 
 ## [Different backgrounds for chat and game](https://github.com/Graywing13/amq-scripts/blob/main/diffBkgForChatAndGame.user.js)
-Lets u pick different images for the in-game bkg and chat. 
+Lets u pick different images for the in-game bkg and chat. Compatible with Elodie's scripts.
 
 By default the chat is merely darkened, but you can pick a gradient of colours (like the image below) if you prefer. 
 
