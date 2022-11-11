@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Show Results In Tab Title
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Show correct answer in tab title during answer phase
 // @author       Graywing13
 // @match        https://animemusicquiz.com/
@@ -9,7 +9,14 @@
 // @updateURL    https://github.com/Graywing13/amq-scripts/blob/main/showResultsInTitle.user.js
 // ==/UserScript==
 
+// === [ SETTINGS ] ======================================================
+
 const preferredLanguage = "english"; // change to "romaji" if u prefer.
+
+// =======================================================================
+
+// don't load on login page
+if (document.getElementById("startPage")) return;
 
 function changeTabTitle(newSong) {
     const correctness = newSong.correct ? "✔️ " : (newSong.correct === false ? "❌ " : "");
@@ -19,8 +26,6 @@ function changeTabTitle(newSong) {
 function resetTabTitle() {
     document.title = "AMQ";
 }
-
-const leaveClickedListener = () => resetTabTitle();
 
  let answerResultsListener = new Listener("answer results", (result) => {
 	 // Creds to the great TheJoseph98 for this section
@@ -47,17 +52,13 @@ const leaveClickedListener = () => resetTabTitle();
     	resetTabTitle();
     });
 
-let quizStartListener = new Listener("quiz ready", () => {
-    // resets the title when leaving the quiz
-    document.getElementById("qpLeaveButton").addEventListener('click', leaveClickedListener);
-});
-
- let quizOverListener = new Listener("quiz over", () => {
+ let quizOverListener = new Listener("quiz end result", () => {
     	resetTabTitle();
-        document.getElementById("qpLeaveButton").removeEventListener('click', leaveClickedListener);
     });
+
+// resets the title when leaving the quiz
+document.getElementById("qpLeaveButton").addEventListener('click', () => resetTabTitle());
 
 answerResultsListener.bindListener();
 nextSongListener.bindListener();
-quizStartListener.bindListener();
 quizOverListener.bindListener();
