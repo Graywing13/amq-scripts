@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Different Bkg For Chat/Game
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.1.1
 // @description  AMQ Diff Background For Chat and Game
 // @author       Graywing13
 // @match        https://animemusicquiz.com/
