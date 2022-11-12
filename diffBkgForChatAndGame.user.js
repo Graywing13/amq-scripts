@@ -29,14 +29,6 @@ if (msgContainer !== undefined) {
     msgContainer.style.backgroundPosition="center";
 }
 
-
-let lobbyAvatarContainer = document.getElementById("lobbyAvatarContainer");
-if (lobbyAvatarContainer !== undefined) {
-    lobbyAvatarContainer.style.backgroundImage=`url(${gameBgLink})`;
-    lobbyAvatarContainer.style.backgroundSize="cover";
-    lobbyAvatarContainer.style.backgroundPosition="center";
-}
-
 let inGameContainer = document.getElementById("gameChatPage").getElementsByClassName("col-xs-9")[0];
 if (inGameContainer !== undefined) {
     inGameContainer.style.backgroundImage=`url(${gameBgLink})`;
