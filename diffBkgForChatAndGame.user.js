@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Different Bkg For Chat/Game
 // @namespace    http://tampermonkey.net/
-// @version      1.1.1
+// @version      1.1.2
 // @description  AMQ Diff Background For Chat and Game
 // @author       Graywing13
 // @match        https://animemusicquiz.com/
@@ -12,8 +12,7 @@
 // === [ SETTINGS ] ============================================
 
 // GAME BKG SETTINGS. Make sure the image link ends in .jpg, .png, or an equivalent.
-// If you are facing misalignment issues with Elodie's script, your best bet is to set gameBgLink to "" (an empty string). This will only use Elodie's background.
-const gameBgLink = "";
+const gameBgLink = "https://images.livemint.com/img/2022/08/01/1600x900/Cat-andriyko-podilnyk-RCfi7vgJjUY-unsplash_1659328989095_1659328998370_1659328998370.jpg"
 
 // CHAT SETTINGS. You can pick an image and two colours.
 const topChatColourHex = "rgba(0, 0, 0, 0.5)"; // Use the format rgba(r, g, b, a) where a is a number from 0 to 1.
