@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Show Results In Tab Title
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Show correct answer in tab title during answer phase
 // @author       Graywing13
 // @match        https://animemusicquiz.com/
@@ -52,7 +52,13 @@ function resetTabTitle() {
     	resetTabTitle();
     });
 
- let quizOverListener = new Listener("quiz end result", () => {
+ // reset title on podium phase
+ let quizResultsListener = new Listener("quiz end result", () => {
+    	resetTabTitle();
+    });
+
+ // reset title after "return to lobby" vote passes
+ let quizOverListener = new Listener("quiz over", () => {
     	resetTabTitle();
     });
 
@@ -61,4 +67,5 @@ document.getElementById("qpLeaveButton").addEventListener('click', () => resetTa
 
 answerResultsListener.bindListener();
 nextSongListener.bindListener();
+quizResultsListener.bindListener();
 quizOverListener.bindListener();
