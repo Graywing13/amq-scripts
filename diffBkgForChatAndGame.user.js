@@ -16,8 +16,8 @@
 const gameBgLink = "";
 
 // CHAT SETTINGS. You can pick an image and two colours.
-const topChatColourHex = "rgba(228, 38, 38, 0.5)"; // Use the format rgba(r, g, b, a) where a is a number from 0 to 1.
-const bottomChatColourHex = "rgba(73, 4, 138, 0.5)";
+const topChatColourHex = "rgba(0, 0, 0, 0.5)"; // Use the format rgba(r, g, b, a) where a is a number from 0 to 1.
+const bottomChatColourHex = "rgba(0, 0, 0, 0.5)";
 const chatBgLink = "https://images.immediate.co.uk/production/volatile/sites/4/2018/08/iStock_13967830_XLARGE-90f249d.jpg"
 
 // =============================================================
