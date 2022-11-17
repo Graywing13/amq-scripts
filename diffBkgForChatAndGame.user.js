@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Different Bkg For Chat/Game
 // @namespace    http://tampermonkey.net/
-// @version      1.1.2
+// @version      1.2.0
 // @description  AMQ Diff Background For Chat and Game
 // @author       Graywing13
 // @match        https://animemusicquiz.com/
@@ -21,14 +21,19 @@ const chatBgLink = "https://images.immediate.co.uk/production/volatile/sites/4/2
 
 // =============================================================
 
-let msgContainer = document.getElementById("gcMessageContainer");
-if (msgContainer !== undefined) {
-    msgContainer.style.backgroundImage=`linear-gradient(to bottom, ${topChatColourHex}, ${bottomChatColourHex}), url(${chatBgLink})`;
-    msgContainer.style.backgroundSize="cover";
-    msgContainer.style.backgroundPosition="center";
-}
+const msgContainerBkgImg = `linear-gradient(to bottom, ${topChatColourHex}, ${bottomChatColourHex}), url(${chatBgLink})`;
+const msgContainerPanels = ["gcMessageContainer", "gcSpectatorList", "gcQueueList"];
 
-let inGameContainer = document.getElementById("gameChatPage").getElementsByClassName("col-xs-9")[0];
+msgContainerPanels.forEach(panel => {
+    const panelContainer = document.getElementById(panel);
+    if (panelContainer !== null) {
+        panelContainer.style.backgroundImage=msgContainerBkgImg;
+        panelContainer.style.backgroundSize="cover";
+        panelContainer.style.backgroundPosition="center";
+    }
+});
+
+const inGameContainer = document.getElementById("gameChatPage").getElementsByClassName("col-xs-9")[0];
 if (inGameContainer !== undefined) {
     inGameContainer.style.backgroundImage=`url(${gameBgLink})`;
     inGameContainer.style.backgroundPosition="center";
