@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Show Results In Tab Title
 // @namespace    http://tampermonkey.net/
-// @version      1.3.0
+// @version      1.3.1
 // @description  Show correct answer in tab title during answer phase
 // @author       Graywing13
 // @match        https://animemusicquiz.com/
@@ -46,7 +46,7 @@ function resetTabTitle() {
 	        }
 		
 		// support for Nexus
-            	if (result.players[0].score === null) newSong.correct = result.players[0].correct === true;
+            	if (result.players[0].score === null) newSong.correct = result.players[0].correct;
 		
 	        changeTabTitle(newSong);
 	    },0);
