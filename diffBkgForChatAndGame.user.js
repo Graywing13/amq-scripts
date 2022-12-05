@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         AMQ Different Bkg For Chat/Game
 // @namespace    http://tampermonkey.net/
-// @version      1.2.0
+// @version      1.2.1
 // @description  AMQ Diff Background For Chat and Game
 // @author       Graywing13
-// @match        https://animemusicquiz.com/
+// @match        https://animemusicquiz.com/*
 // @downloadURL  https://github.com/Graywing13/amq-scripts/blob/main/diffBkgForChatAndGame.user.js
 // @updateURL    https://github.com/Graywing13/amq-scripts/blob/main/diffBkgForChatAndGame.user.js
 // ==/UserScript==
