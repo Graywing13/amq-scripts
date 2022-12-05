@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         AMQ Show Results In Tab Title
 // @namespace    http://tampermonkey.net/
-// @version      1.3.1
+// @version      1.3.2
 // @description  Show correct answer in tab title during answer phase
 // @author       Graywing13
-// @match        https://animemusicquiz.com/
+// @match        https://animemusicquiz.com/*
 // @downloadURL  https://github.com/Graywing13/amq-scripts/blob/main/showResultsInTitle.user.js
 // @updateURL    https://github.com/Graywing13/amq-scripts/blob/main/showResultsInTitle.user.js
 // ==/UserScript==
