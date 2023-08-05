@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Different Bkg For Chat/Game
 // @namespace    http://tampermonkey.net/
-// @version      1.2.1
+// @version      1.2.2
 // @description  AMQ Diff Background For Chat and Game
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
@@ -10,6 +10,8 @@
 // ==/UserScript==
 
 // === [ SETTINGS ] ============================================
+
+if (!document.getElementById("loginPage")) return;
 
 // GAME BKG SETTINGS. Make sure the image link ends in .jpg, .png, or an equivalent.
 const gameBgLink = "https://images.livemint.com/img/2022/08/01/1600x900/Cat-andriyko-podilnyk-RCfi7vgJjUY-unsplash_1659328989095_1659328998370_1659328998370.jpg"
