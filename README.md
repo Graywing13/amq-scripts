@@ -31,6 +31,8 @@ Known bugs:
 
 - screen may shift when "tab" key is pressed.
 
+---
+
 ## [Style Font, Containers, and Homepage Background](https://github.com/Graywing13/amq-scripts/blob/main/styleFontContainerAndHomepageBg.user.js)
 
 Most people probably uses Elodie's script so I don't see many others using this. I just don't wanna install Stylus so lol 🏕️
