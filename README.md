@@ -30,3 +30,10 @@ Press [Tab] key to skip to next song.
 Known bugs:
 
 - screen may shift when "tab" key is pressed.
+
+## [Style Font, Containers, and Homepage Background](https://github.com/Graywing13/amq-scripts/blob/main/styleFontContainerAndHomepageBg.user.js)
+
+Most people probably uses Elodie's script so I don't see many others using this. I just don't wanna install Stylus so lol 🏕️
+
+![image](https://github.com/Graywing13/amq-scripts/assets/30674558/60aba604-4446-4ffb-8f32-3ba5c5b10112)
+
