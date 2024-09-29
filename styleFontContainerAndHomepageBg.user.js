@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Font & Homepage Style
 // @namespace    https://github.com/Graywing13
-// @version      0.2
+// @version      0.3
 // @description  Changes font, container style, and homepage background image. Kinda sloppy ngl :camping:
 // @author       Graywing13
 // @match        https://*.animemusicquiz.com/*

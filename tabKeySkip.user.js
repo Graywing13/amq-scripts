@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Tab Key to Skip
 // @namespace    https://github.com/Graywing13
-// @version      1.0
+// @version      1.0.1
 // @description  Lets AMQ songs be skipped using the tab key while playing an AMQ game.
 // @author       Graywing13
 // @match        https://*.animemusicquiz.com/*

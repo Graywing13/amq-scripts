@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Show Results In Tab Title
 // @namespace    http://tampermonkey.net/
-// @version      1.3.2
+// @version      1.3.3
 // @description  Show correct answer in tab title during answer phase
 // @author       Graywing13
 // @match        https://*.animemusicquiz.com/*
