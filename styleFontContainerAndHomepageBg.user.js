@@ -5,8 +5,8 @@
 // @description  Changes font, container style, and homepage background image. Kinda sloppy ngl :camping:
 // @author       Graywing13
 // @match        https://*.animemusicquiz.com/*
-// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
-// @grant        none
+// @downloadURL  https://github.com/Graywing13/amq-scripts/raw/main/styleFontContainerAndHomepageBg.user.js
+// @updateURL    https://github.com/Graywing13/amq-scripts/raw/main/styleFontContainerAndHomepageBg.user.js
 // ==/UserScript==
 
 // === [ SETTINGS ] ============================================

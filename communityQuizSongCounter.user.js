@@ -5,8 +5,8 @@
 // @description  Display song count in each community quiz rule block
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
-// @downloadURL  https://github.com/Graywing13/amq-scripts/blob/main/communityQuizSongCounter.user.js
-// @updateURL    https://github.com/Graywing13/amq-scripts/blob/main/communityQuizSongCounter.user.js
+// @downloadURL  https://github.com/Graywing13/amq-scripts/raw/main/communityQuizSongCounter.user.js
+// @updateURL    https://github.com/Graywing13/amq-scripts/raw/main/communityQuizSongCounter.user.js
 // ==/UserScript==
 
 if (typeof Listener === "undefined") return;

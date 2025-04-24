@@ -8,8 +8,8 @@ Some scripts I made for https://animemusicquiz.com/
 
 For anyone else who tabs out a lot -- this shows answer results in the tab title, so u dont have to tab back in to check answers.
 
-![Correct case](https://media.discordapp.net/attachments/989576545913933924/1040346624381173781/unknown.png)
-![Incorrect case](https://media.discordapp.net/attachments/989576545913933924/1040346624737681488/unknown.png)
+![Correct case](https://github.com/Graywing13/amq-scripts/blob/main/img/correct-tab-title.png)
+![Incorrect case](https://github.com/Graywing13/amq-scripts/blob/main/img/incorrect-tab-title.png)
 
 ---
 

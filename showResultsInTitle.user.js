@@ -5,8 +5,8 @@
 // @description  Show correct answer in tab title during answer phase
 // @author       Graywing13
 // @match        https://*.animemusicquiz.com/*
-// @downloadURL  https://github.com/Graywing13/amq-scripts/blob/main/showResultsInTitle.user.js
-// @updateURL    https://github.com/Graywing13/amq-scripts/blob/main/showResultsInTitle.user.js
+// @downloadURL  https://github.com/Graywing13/amq-scripts/raw/main/showResultsInTitle.user.js
+// @updateURL    https://github.com/Graywing13/amq-scripts/raw/main/showResultsInTitle.user.js
 // ==/UserScript==
 
 // === [ SETTINGS ] ======================================================
