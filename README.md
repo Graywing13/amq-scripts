@@ -13,6 +13,12 @@ For anyone else who tabs out a lot -- this shows answer results in the tab title
 
 ---
 
+## [Community Quiz Song Counter](https://github.com/Graywing13/amq-scripts/blob/main/communityQuizSongCounter.user.js)
+
+Display song count in each community quiz rule block
+
+---
+
 ## [Different backgrounds for chat and game](https://github.com/Graywing13/amq-scripts/blob/main/diffBkgForChatAndGame.user.js)
 
 Lets u pick different images for the in-game bkg and chat. Compatible with Elodie's scripts.
