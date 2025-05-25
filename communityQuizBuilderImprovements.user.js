@@ -2,7 +2,7 @@
 // @name         AMQ Community Quiz Builder QOL Improvements
 // @namespace    http://tampermonkey.net/
 // @version      0.2
-// @description  QOL improvements for community quizzes - song count number editor, song counter
+// @description  QOL improvements for community quizzes - song count number editor, song counter, TODO...
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
 // @downloadURL  https://github.com/Graywing13/amq-scripts/raw/main/communityQuizBuilderImprovements.user.js
@@ -31,6 +31,9 @@ const loadInterval = setInterval(() => {
         const openCustomQuizListener = new Listener("get current master list id", () => {
             setupSongCounter();
             setupSongCountInputter();
+            setupCollapseRuleBlock();
+            setupDuplicateSearcher()
+            setupAlreadySavedListener()
         });
         openCustomQuizListener.bindListener();
     }
@@ -61,7 +64,7 @@ function appendDomElements() {
     refreshCountsContainer.style.cssText = [
         "justify-content: center"
     ].join(";");
-    $("#cqcQuizCreatorHeader").append(refreshCountsBtn);
+    $("#cqcQuizCreatorHeader").append(refreshCountsContainer);
 
     const refreshCountsBtn = document.createElement("div");
     refreshCountsBtn.innerText = "Refresh song counts"
@@ -202,17 +205,20 @@ function computeDupes(allValues) {
 
 // ==[ ALREADY SAVED LISTENER ]==================================================================
 
-$("#cqcBackButton").addEventListener("click", () => {
-    if (!customQuizCreator) {
-        return
-    }
-    if (customQuizCreator.currentSaveString === JSON.stringify(customQuizCreator.generateQuizSave())) {
-        log(ALREADY_SAVED, "Save was already done")
-        alert("u can exit lol (hopefully build this into the modal)")
-    } else {
-        log(ALREADY_SAVED, "Quiz is NOT saved")
-        alert("dont exit lol (hopefully build this into the modal)")
-    }
-})
+function setupAlreadySavedListener() {
+    $("#cqcBackButton").addEventListener("click", () => {
+        if (!customQuizCreator) {
+            return
+        }
+        if (customQuizCreator.currentSaveString === JSON.stringify(customQuizCreator.generateQuizSave())) {
+            log(ALREADY_SAVED, "Save was already done")
+            alert("u can exit lol (hopefully build this into the modal)")
+        } else {
+            log(ALREADY_SAVED, "Quiz is NOT saved")
+            alert("dont exit lol (hopefully build this into the modal)")
+        }
+    })
 // TODO WIP
+}
+
 
