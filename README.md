@@ -13,9 +13,18 @@ For anyone else who tabs out a lot -- this shows answer results in the tab title
 
 ---
 
-## [Community Quiz Song Counter](https://github.com/Graywing13/amq-scripts/blob/main/communityQuizSongCounter.user.js)
+## [Community Quiz Song Counter](https://github.com/Graywing13/amq-scripts/blob/main/communityQuizBuilderImprovements.user.js)
 
-Display song count in each community quiz rule block
+
+
+In Rule Block Header
+- **Count songs**: Display song count in each community quiz rule block
+- Search for duplicates
+- Collapse Rule Block
+
+In other areas
+- Input song counts (see slider)
+- Display whether quiz was already saved when exiting
 
 ---
 
