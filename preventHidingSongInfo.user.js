@@ -18,11 +18,12 @@ const loadInterval = setInterval(() => {
 }, 500);
 
 function setup() {
-    setupDom()
+    setupPrevInfo()
+    setupCurrInfo()
     setupListener()
 }
 
-function setupDom() {
+function setupPrevInfo() {
     $('#qpInfoHider').css({
         "display": "none"
     })
@@ -45,6 +46,21 @@ function setupDom() {
         trigger: 'hover',
         container: 'body',
         animation: false
+    })
+}
+
+function setupCurrInfo() {
+    const currentTextColour = $('#qpUpvoteContainer').css('background-color')
+    const currentText = document.createElement('div')
+    currentText.innerText = "Current"
+    currentText.style.cssText = [
+        'background-color: ' + currentTextColour,
+        'border-top: solid 1px #1b1b1b',
+        'margin-top: 5px',
+    ].join(";");
+    $('#qpRateOuterContainer').prepend(currentText)
+    $('#qpInnerContainer')?.css({
+        'margin-top': '0'
     })
 }
 
