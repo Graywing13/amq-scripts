@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Prevent Hiding Song Info
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      1.0
 // @description  Show previous song's info during guessing phase
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
@@ -56,7 +56,7 @@ function setupCurrInfo() {
     currentText.style.cssText = [
         'background-color: ' + currentTextColour,
         'border-top: solid 1px #1b1b1b',
-        'margin-top: 5px',
+        'margin-top: 8px',
     ].join(";");
     $('#qpRateOuterContainer').prepend(currentText)
     $('#qpInnerContainer')?.css({
