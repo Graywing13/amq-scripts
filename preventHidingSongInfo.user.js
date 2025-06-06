@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Prevent Hiding Song Info
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Show previous song's info during guessing phase
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
