@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Community Quiz Bulk Maker
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Add list of song ids at once to community quiz
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
@@ -66,6 +66,7 @@ function appendBulkSaveModal() {
     "guessTime": { "guessTime": 20, "extraGuessTime": 0 },
     "samplePoint": { "samplePoint": [0, 100] },
     "playBackSpeed": { "playBackSpeed": 1 },
+    "duplicates": true
 }
                         </code></pre>
 <p>Songs are automatically deduplicated.</p>
@@ -132,7 +133,8 @@ function generateQuizSave() {
                 "guessTime": {"guessTime": 20, "extraGuessTime": 0},
                 "samplePoint": {"samplePoint": [0, 100]},
                 "playBackSpeed": {"playBackSpeed": 1},
-                "blocks": generateBlocks()
+                "blocks": generateBlocks(),
+                duplicates: true
             }
         ]
     }
