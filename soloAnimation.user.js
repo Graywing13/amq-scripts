@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Solo Animation
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Nyan cats you off the screen when you get a solo
 // @author       gw13
 // @match        https://animemusicquiz.com/*
@@ -15,7 +15,7 @@
 
 /** SETTINGS **/
 
-const MIN_LOBBY_SIZE = 8;
+const MIN_LOBBY_PLAYERS = 8;
 
 /** CODE **/
 
@@ -59,27 +59,27 @@ function nyanCat(self) {
     const nyanElement = $(nyanSvg).css({'transform': 'rotate(270deg) translateX(-100%)', 'z-index': -1, 'position': 'relative'})
     self.avatarSlot.$avatarImageContainer.append(nyanElement)
     self.avatarSlot.$avatarImageContainer[0].style.transition = "all 0.5s ease-in-out"
-    self.avatarSlot.$avatarImageContainer[0].style.translate = "0 -90vh"
+    self.avatarSlot.$avatarImageContainer[0].style.translate = "0 -100vh"
     setTimeout(() => {
         nyanElement.remove()
         self.avatarSlot.$avatarImageContainer[0].style.transition = "none"
         self.avatarSlot.$avatarImageContainer[0].style.translate = "0 0"
         self.avatarSlot.$avatarImageContainer[0].style.opacity = "0"
-    }, 500)
+    }, 550)
     setTimeout(() => {
         self.avatarSlot.$avatarImageContainer[0].style.transition = "all 0.5s ease-in"
         self.avatarSlot.$avatarImageContainer[0].style.opacity = "1"
-    }, 650)
+    }, 700)
 }
 
 function animateIfApplicable(result) {
     const allPlayers = Object.values(quiz.players)
-    if (allPlayers.length < MIN_LOBBY_SIZE || quiz.isSpectator) {
+    if (allPlayers.length < MIN_LOBBY_PLAYERS || quiz.isSpectator) {
         return // skip
     }
     const self = allPlayers.find(player => player.isSelf)
     if (self?.teamNumber) {
-        const teammates = quiz.players.filter(player => player.teamNumber === self.teamNumber)
+        const teammates = allPlayers.filter(player => player.teamNumber === self.teamNumber)
         if (teammates.length > 1) {
             return // skip
         }
