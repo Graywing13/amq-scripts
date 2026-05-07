@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Solo Animation
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Nyan cats you off the screen when you get a solo
 // @author       gw13
 // @match        https://animemusicquiz.com/*
@@ -57,19 +57,21 @@ function nyanCat(self) {
 </svg>
 `
     const nyanElement = $(nyanSvg).css({'transform': 'rotate(270deg) translateX(-100%)', 'z-index': -1, 'position': 'relative'})
-    self.avatarSlot.$avatarImageContainer.append(nyanElement)
-    self.avatarSlot.$avatarImageContainer[0].style.transition = "all 0.5s ease-in-out"
-    self.avatarSlot.$avatarImageContainer[0].style.translate = "0 -100vh"
+    setTimeout(() => {
+        self.avatarSlot.$avatarImageContainer.append(nyanElement)
+        self.avatarSlot.$avatarImageContainer[0].style.transition = "all 0.6s ease-in-out"
+        self.avatarSlot.$avatarImageContainer[0].style.translate = "0 -100vh"
+    }, 50)
     setTimeout(() => {
         nyanElement.remove()
         self.avatarSlot.$avatarImageContainer[0].style.transition = "none"
         self.avatarSlot.$avatarImageContainer[0].style.translate = "0 0"
         self.avatarSlot.$avatarImageContainer[0].style.opacity = "0"
-    }, 550)
+    }, 700)
     setTimeout(() => {
         self.avatarSlot.$avatarImageContainer[0].style.transition = "all 0.5s ease-in"
         self.avatarSlot.$avatarImageContainer[0].style.opacity = "1"
-    }, 700)
+    }, 850)
 }
 
 function animateIfApplicable(result) {
