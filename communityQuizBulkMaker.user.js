@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         AMQ Community Quiz Bulk Maker
 // @namespace    http://tampermonkey.net/
-// @version      0.2
-// @description  Add list of song ids at once to community quiz
+// @version      0.3
+// @description  Add list of song ids or ann ids at once to community quiz
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
 // @downloadURL  https://github.com/Graywing13/amq-scripts/blob/main/communityQuizBulkMaker.user.js
@@ -56,6 +56,29 @@ function appendBulkSaveModal() {
                             <textarea id="cqcBulkSaveSongIds" class="form-control" rows="3"
                                       placeholder="Paste in all song ids, separated by commas" maxlength="50000"></textarea>
                         </div>
+                        <div class="cqcSaveContentContainer">
+                            <label class="cqcSaveLabel">ANN IDs</label>
+                            <textarea id="cqcBulkSaveAnnIds" class="form-control" rows="3"
+                                      placeholder="Paste in all ANN ids, separated by commas" maxlength="50000"></textarea>
+                        </div>
+                        <details>
+                            <summary style="font-size: large;padding-top: 10px;cursor: pointer;">Scrapers (click to expand)</summary>
+                            <p>FYI if you want to scrape all shows done by a studio, go to their ANN page and run this in console:</p>
+                            <pre><code>
+Array
+.from($(document)
+.querySelectorAll("span"))
+.filter(s => s.innerText.includes("Animation Production"))
+.filter(s => {
+    if (!s.lastElementChild?.href) {
+        console.log(\`Could not locate link for "$\{s.innerText}".\n- Previous text: "$\{s.previousSibling.innerText.trim()}".\n- Double check whether this entry already exists or if it should be manually added.\`);
+        return false;
+    }
+    return true})
+.map(s => s.lastElementChild?.href?.split("id=")[1])
+.join(", ")
+                            </code></pre>
+                        </details>
                         <h3 id="cqcBulkQuizTitle"></h3>
                         <h4 id="cqcBulkQuizDescription"></h4>
                         <p>This creates a single block, with the settings resetted to the following. To change them, please use the normal save afterward.</p>
@@ -66,7 +89,8 @@ function appendBulkSaveModal() {
     "guessTime": { "guessTime": 20, "extraGuessTime": 0 },
     "samplePoint": { "samplePoint": [0, 100] },
     "playBackSpeed": { "playBackSpeed": 1 },
-    "duplicates": true
+    "duplicates": true,
+    "guessModes":{ "song": true, "tinyVideo": false, "blurVideo": false }
 }
                         </code></pre>
 <p>Songs are automatically deduplicated.</p>
@@ -133,25 +157,28 @@ function generateQuizSave() {
                 "guessTime": {"guessTime": 20, "extraGuessTime": 0},
                 "samplePoint": {"samplePoint": [0, 100]},
                 "playBackSpeed": {"playBackSpeed": 1},
-                "blocks": generateBlocks(),
-                duplicates: true
+                "blocks": [...generateBlocks("#cqcBulkSaveSongIds", "annSongId"), ...generateBlocks("#cqcBulkSaveAnnIds", "annId")],
+                "duplicates": true,
+                "guessModes":{ "song": true, "tinyVideo": false, "blurVideo": false }
             }
         ]
     }
 }
 
-function generateBlocks() {
-    const blockIdStrings = $('#cqcBulkSaveSongIds').val().split(',');
+function generateBlocks(inputId, blockLabel) {
+    if (!$(inputId).val()) return []
+    const blockIdStrings = $(inputId).val().split(',');
     const blockIds = blockIdStrings.map(idStr => {
         const num = parseInt(idStr);
         if (isNaN(num)) {
-            throw new Error(`Tried to parse "${idStr}" but got NaN`)
+            throw new Error(`${blockLabel}: Tried to parse "${idStr}" but got NaN`)
         }
         return num
     })
     const deduped = [...new Set(blockIds)];
-    console.log(`Removed ${blockIds.length - deduped.length} dupes`)
-    return deduped.map(songId => ({"annSongId": songId}))
+    console.log(`${blockLabel}: Removed ${blockIds.length - deduped.length} dupes`)
+    const additionalInfo = blockLabel === "annId" ? {"includeSongTypes":{"op":true,"ed":true,"in":true},"numberOfSongs":1} : {}
+    return deduped.map(songId => ({[blockLabel]: songId, ...additionalInfo}))
 }
 
 function setSaving(isSaving) {
