@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Community Quiz Bulk Maker
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Add list of song ids or ann ids at once to community quiz
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
@@ -69,13 +69,21 @@ Array
 .from($(document)
 .querySelectorAll("span"))
 .filter(s => s.innerText.includes("Animation Production"))
-.filter(s => {
-    if (!s.lastElementChild?.href) {
-        console.log(\`Could not locate link for "$\{s.innerText}".\n- Previous text: "$\{s.previousSibling.innerText.trim()}".\n- Double check whether this entry already exists or if it should be manually added.\`);
-        return false;
+.map(s => {
+    const previousText = s.previousSibling.innerText;
+    if (s.innerText === ", Animation Production" && s.previousSibling.children[1]?.href) {
+        console.log(\`ℹ️ Replaced "${s.innerText}" with "${s.previousSibling.innerText.trim()}"\`)
+        return s.previousSibling;
     }
+    return s;
+})
+.filter(s => { 
+    if (!s.children[1]?.href) {
+        console.log(\`⚠️ Could not locate link for "${s.innerText}".\\n- Previous text: "${s.previousSibling.innerText.trim()}".\\n- Double check whether this entry already exists or if it should be manually added.\`);
+        return false;
+    } 
     return true})
-.map(s => s.lastElementChild?.href?.split("id=")[1])
+.map(s => s.children[1]?.href?.split("id=")[1])
 .join(", ")
                             </code></pre>
                         </details>
