@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         AMQ Community Quiz Bulk Maker
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  Add list of song ids or ann ids at once to community quiz
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
-// @downloadURL  https://github.com/Graywing13/amq-scripts/blob/main/communityQuizBulkMaker.user.js
-// @updateURL    https://github.com/Graywing13/amq-scripts/blob/main/communityQuizBulkMaker.user.js
+// @downloadURL  https://github.com/Graywing13/amq-scripts/raw/main/communityQuizBulkMaker.user.js
+// @updateURL    https://github.com/Graywing13/amq-scripts/raw/main/communityQuizBulkMaker.user.js
 // ==/UserScript==
 
 if (typeof Listener === "undefined") return;
@@ -72,14 +72,14 @@ Array
 .map(s => {
     const previousText = s.previousSibling.innerText;
     if (s.innerText === ", Animation Production" && s.previousSibling.children[1]?.href) {
-        console.log(\`ℹ️ Replaced "${s.innerText}" with "${s.previousSibling.innerText.trim()}"\`)
+        console.log(\`ℹ️ Replaced "$\{s.innerText}" with "$\{s.previousSibling.innerText.trim()}"\`)
         return s.previousSibling;
     }
     return s;
 })
 .filter(s => { 
     if (!s.children[1]?.href) {
-        console.log(\`⚠️ Could not locate link for "${s.innerText}".\\n- Previous text: "${s.previousSibling.innerText.trim()}".\\n- Double check whether this entry already exists or if it should be manually added.\`);
+        console.log(\`⚠️ Could not locate link for "$\{s.innerText}".\n- Previous text: "$\{s.previousSibling.innerText.trim()}".\n- Double check whether this entry already exists or if it should be manually added.\`);
         return false;
     } 
     return true})
