@@ -65,21 +65,30 @@ function appendBulkSaveModal() {
                             <summary style="font-size: large;padding-top: 10px;cursor: pointer;">Scrapers (click to expand)</summary>
                             <p>FYI if you want to scrape all shows done by a studio, go to their ANN page and run this in console:</p>
                             <pre><code>
-Array
-.from($(document)
+Array.from($(document)
 .querySelectorAll("span"))
 .filter(s => s.innerText.includes("Animation Production"))
 .map(s => {
     const previousText = s.previousSibling.innerText;
     if (s.innerText === ", Animation Production" && s.previousSibling.children[1]?.href) {
-        console.log(\`ℹ️ Replaced "$\{s.innerText}" with "$\{s.previousSibling.innerText.trim()}"\`)
+        console.log(\`ℹ️ Replaced $\{s.innerText} with $\{s.previousSibling.innerText.trim()}\`)
         return s.previousSibling;
     }
     return s;
 })
 .filter(s => { 
     if (!s.children[1]?.href) {
-        console.log(\`⚠️ Could not locate link for "$\{s.innerText}".\n- Previous text: "$\{s.previousSibling.innerText.trim()}".\n- Double check whether this entry already exists or if it should be manually added.\`);
+    let prevTextWithLinkStr = "NOT FOUND IN 10 ITERATIONS"
+    let prev = s.previousSibling;
+    for (let i = 0; i < 10; i++) {
+        if (prev.children[1]?.href) {
+            prevTextWithLinkStr = prev.innerText.trim()
+            break;
+        } else {
+            prev = prev.previousSibling
+        }
+    }
+        console.log(\`⚠️ Could not locate link for "$\{s.innerText}".\n- Previous text: "$\{s.previousSibling.innerText.trim()}".\n- Previous link: $\{prevTextWithLinkStr} 🔗.\n- Double check whether this entry already exists or if it should be manually added.\`);
         return false;
     } 
     return true})
