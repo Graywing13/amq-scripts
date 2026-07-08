@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Community Quiz Bulk Maker
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.5.1
 // @description  Add list of song ids or ann ids at once to community quiz
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
