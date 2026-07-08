@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMQ Community Quiz Bulk Maker
 // @namespace    http://tampermonkey.net/
-// @version      0.5.1
+// @version      0.5.2
 // @description  Add list of song ids or ann ids at once to community quiz
 // @author       Graywing13
 // @match        https://animemusicquiz.com/*
@@ -71,7 +71,7 @@ Array.from($(document)
 .map(s => {
     const previousText = s.previousSibling.innerText;
     if (s.innerText === ", Animation Production" && s.previousSibling.children[1]?.href) {
-        console.log(\`ℹ️ Replaced $\{s.innerText} with $\{s.previousSibling.innerText.trim()}\`)
+        console.log(\`ℹ️ Replaced "$\{s.innerText}" with "$\{s.previousSibling.innerText.trim()}"\`)
         return s.previousSibling;
     }
     return s;
